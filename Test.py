@@ -1,5 +1,11 @@
+from multiprocessing import freeze_support
+
 from data_cleaner import DataCleaner
 import pandas as pd
+import helper
+import pandas as pd
+import timeit
+
 
 dc = DataCleaner()
 
@@ -17,4 +23,23 @@ dict = {'Age':'x>17', 'Stream':'x==\'Math\'', 'Percentage':'x>70'}
 
 new_df = dc.remove_rows_by_condition(dataframe,dict)
 
-print("End")
+df = pd.read_csv('datathon_case_1_case_1_market_data.csv')
+
+count=0
+def parallel_test_func(df):
+    df['test'] = df['SEASON']*2
+    global count
+    #df['count'] = count
+    count+=1
+    print(count)
+    return df
+
+
+if __name__ == '__main__':
+    #df = pd.read_csv('datathon_case_1_case_1_market_data.csv')
+    test = helper.Helper.parallelize(df, parallel_test_func)
+    print("End")
+
+#helper.Helper.parallelize(data=df, func = parallel_test_func)
+
+#print("End")
