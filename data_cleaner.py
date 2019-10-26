@@ -37,6 +37,13 @@ class DataCleaner():
 
                 return  new_df
 
-    def remove_outliers(self):
-        pass
+    def remove_outliers(self, df, low,high):
+        low = low
+        high = high
+        quant_df = df.quantile([low, high])
+        for name in list(df.columns):
+            if pd.api.types.is_numeric_dtype(df[name]):
+                df = df[(df[name] > quant_df.loc[low, name])
+                        & (df[name] < quant_df.loc[high, name])]
+        return df
 
