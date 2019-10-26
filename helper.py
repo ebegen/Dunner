@@ -4,9 +4,12 @@ from multiprocessing import cpu_count, Pool
 import dask.dataframe as ddf
 import swifter
 
-class Helper:
+class Helper(object):
 
-    def parallelize(data, func):
+    def __init__(self):
+        pass
+
+    def parallelize(self, data, func):
         # cores = cpu_count()  # Number of CPU cores on your system
         # partitions = cores-2  # Define as many partitions as you want
         #
@@ -22,3 +25,12 @@ class Helper:
         new_data = data.swifter.apply(lambda row: func(row), axis=1)
 
         return new_data
+
+    def pipeline(self, function_list=None):
+        '''
+        serial function executer method
+        :param function_list: functions dictionary
+        :return:
+        '''
+        for name, func in function_list.items():
+            func()

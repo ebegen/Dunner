@@ -34,10 +34,26 @@ def parallel_test_func(df):
     print(count)
     return df
 
+def sum():
+    a = 2
+    b = 3
+    print(a + b)
+
+def multiply():
+    a = 2
+    b = 3
+    print(a * b)
 
 if __name__ == '__main__':
     #df = pd.read_csv('datathon_case_1_case_1_market_data.csv')
-    test = helper.Helper.parallelize(df, parallel_test_func)
+    #test = helper.Helper.parallelize(df, parallel_test_func)
+
+    func_list = {"sum":sum,"multiply":multiply}
+
+    helper = helper.Helper()
+
+    helper.pipeline(func_list)
+
     print("End")
 
 #helper.Helper.parallelize(data=df, func = parallel_test_func)
