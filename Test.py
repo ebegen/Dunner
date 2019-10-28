@@ -1,10 +1,11 @@
 from multiprocessing import freeze_support
 
 from data_cleaner import DataCleaner
+from data_operations import DataOperations
 import pandas as pd
 import helper
 import pandas as pd
-import timeit
+import time
 import numpy as np
 
 
@@ -58,14 +59,24 @@ if __name__ == '__main__':
     #helper.pipeline(func_list)
 
     #outlier remove test
-    dt = DataCleaner()
-    np.random.seed(42)
-    age = np.random.randint(20, 100, 50)
-    name = ['name' + str(i) for i in range(50)]
-    address = ['address' + str(i) for i in range(50)]
-    df = pd.read_csv('datathon_case_1_case_1_market_data.csv') #pd.DataFrame(data={'age': age, 'name': name, 'address': address})
-    removed_df = dt.remove_outliers(df, .05,.95)
+    # dt = DataCleaner()
+    # np.random.seed(42)
+    # age = np.random.randint(20, 100, 50)
+    # name = ['name' + str(i) for i in range(50)]
+    # address = ['address' + str(i) for i in range(50)]
+    # df = pd.read_csv('datathon_case_1_case_1_market_data.csv') #pd.DataFrame(data={'age': age, 'name': name, 'address': address})
+    # removed_df = dt.remove_outliers(df, .05,.95)
 
+    #Faster data read
+    # start_time = time.time()
+    # df = pd.read_csv('datathon_case_1_case_1_market_data.csv')
+    # elapsed_time = time.time() - start_time
+    # print(str.format("Pandas geçen zaman {0}", time.strftime("%H:%M:%S", time.gmtime(elapsed_time))))
+    do = DataOperations()
+    start_time = time.time()
+    df_f = do.read_csv_file('datathon_case_1_case_1_market_data.csv')
+    elapsed_time = time.time() - start_time
+    print(str.format("Pandas geçen zaman {0}", time.strftime("%H:%M:%S", time.gmtime(elapsed_time))))
 
     print("End")
 

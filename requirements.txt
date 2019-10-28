@@ -5,6 +5,8 @@ matplotlib
 seaborn
 jupyter
 swifter
+feather-format
+dask
 # tensorflow==1.10
 #keras==2.2.2
 #imbalanced-learn
