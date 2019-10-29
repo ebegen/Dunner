@@ -72,11 +72,16 @@ if __name__ == '__main__':
     # df = pd.read_csv('datathon_case_1_case_1_market_data.csv')
     # elapsed_time = time.time() - start_time
     # print(str.format("Pandas geçen zaman {0}", time.strftime("%H:%M:%S", time.gmtime(elapsed_time))))
-    do = DataOperations()
-    start_time = time.time()
-    df_f = do.read_csv_file('datathon_case_1_case_1_market_data.csv')
-    elapsed_time = time.time() - start_time
-    print(str.format("Pandas geçen zaman {0}", time.strftime("%H:%M:%S", time.gmtime(elapsed_time))))
+    # do = DataOperations()
+    # start_time = time.time()
+    # df_f = do.read_csv_file('datathon_case_1_case_1_market_data.csv')
+    # elapsed_time = time.time() - start_time
+    # print(str.format("Pandas geçen zaman {0}", time.strftime("%H:%M:%S", time.gmtime(elapsed_time))))
+
+    #Return unique elements from list
+    lst = ['word1','word2','word3']
+    do=DataOperations()
+    rtr = do.return_unique_data(lst)
 
     print("End")
 
