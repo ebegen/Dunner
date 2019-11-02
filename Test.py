@@ -7,7 +7,8 @@ import helper
 import pandas as pd
 import time
 import numpy as np
-
+import datetime
+from datetime import timedelta
 
 
 df = pd.read_csv('datathon_case_1_case_1_market_data.csv')
@@ -79,9 +80,21 @@ if __name__ == '__main__':
     # print(str.format("Pandas geçen zaman {0}", time.strftime("%H:%M:%S", time.gmtime(elapsed_time))))
 
     #Return unique elements from list
-    lst = ['word1','word2','word3']
-    do=DataOperations()
-    rtr = do.return_unique_data(lst)
+
+    #unique data test
+    # lst = ['word1','word2','word3']
+    #     # do=DataOperations()
+    #     # rtr = do.return_unique_data(lst)
+    date_today = datetime.datetime.now()
+    days = pd.date_range(date_today, date_today + timedelta(7), freq='D')
+
+    np.random.seed(seed=1111)
+    data = np.random.randint(1, high=100, size=len(days))
+    df = pd.DataFrame({'test': days, 'col2': data})
+    do = DataOperations()
+
+    do.divide_date_to_periods(df,'test',['y','M','d','Q'])
+    print(df)
 
     print("End")
 

@@ -1,5 +1,6 @@
 import feather
 import dask.dataframe as dd
+import pandas as pd
 
 class DataOperations:
 
@@ -27,4 +28,19 @@ class DataOperations:
             return list(set_list)
         else:
             return set_list
+
+    def divide_date_to_periods(self, df, date_column, period_arr):
+
+        for period in period_arr:
+            if period.lower() == "y":
+                df["p_year"] = pd.DatetimeIndex(df[date_column]).year
+            if period.lower() == "m":
+                df["p_month"] = pd.DatetimeIndex(df[date_column]).month
+            if period.lower() == "d":
+                df["p_day"] = pd.DatetimeIndex(df[date_column]).day
+            if period.lower() == "q":
+                df['p_quarter'] = pd.DatetimeIndex(df[date_column]).quarter
+
+        return df
+
 
