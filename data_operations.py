@@ -33,14 +33,27 @@ class DataOperations:
 
         for period in period_arr:
             if period.lower() == "y":
-                df["p_year"] = pd.DatetimeIndex(df[date_column]).year
+                col_name = date_column + '_year'
+                df[col_name] = pd.DatetimeIndex(df[date_column]).year
             if period.lower() == "m":
-                df["p_month"] = pd.DatetimeIndex(df[date_column]).month
+                col_name = date_column + '_month'
+                df[col_name] = pd.DatetimeIndex(df[date_column]).month
             if period.lower() == "d":
-                df["p_day"] = pd.DatetimeIndex(df[date_column]).day
+                col_name = date_column + '_day'
+                df[col_name] = pd.DatetimeIndex(df[date_column]).day
             if period.lower() == "q":
-                df['p_quarter'] = pd.DatetimeIndex(df[date_column]).quarter
+                col_name = date_column + '_quarter'
+                df[col_name] = pd.DatetimeIndex(df[date_column]).quarter
 
         return df
+
+    def to_datetime(self,df,date_column,date_format='%Y-%m-%d',is_divide_periods=False):
+        df[date_column] = pd.to_datetime(df[date_column], format=date_format)
+        if is_divide_periods:
+            df = self.divide_date_to_periods(df,date_column,['Y','M','D','Q'])
+        return df
+
+
+
 
 

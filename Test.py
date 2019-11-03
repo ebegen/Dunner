@@ -85,15 +85,23 @@ if __name__ == '__main__':
     # lst = ['word1','word2','word3']
     #     # do=DataOperations()
     #     # rtr = do.return_unique_data(lst)
-    date_today = datetime.datetime.now()
-    days = pd.date_range(date_today, date_today + timedelta(7), freq='D')
+    #
 
-    np.random.seed(seed=1111)
-    data = np.random.randint(1, high=100, size=len(days))
-    df = pd.DataFrame({'test': days, 'col2': data})
+    #Divide Date to Season Test
+    # date_today = datetime.datetime.now()
+    # days = pd.date_range(date_today, date_today + timedelta(7), freq='D')
+    #
+    # np.random.seed(seed=1111)
+    # data = np.random.randint(1, high=100, size=len(days))
+    # df = pd.DataFrame({'test': days, 'col2': data})
+    # do = DataOperations()
+    # do.divide_date_to_periods(df,'test',['y','M','d','Q'])
+
+    dates = ['2015-08-10','2015-08-11','2015-08-12']
+    df = pd.DataFrame({'test': dates})
     do = DataOperations()
+    df = do.to_datetime(df,'test')
 
-    do.divide_date_to_periods(df,'test',['y','M','d','Q'])
     print(df)
 
     print("End")
