@@ -47,3 +47,11 @@ class DataCleaner():
                         & (df[name] < quant_df.loc[high, name])]
         return df
 
+    #TODO remove unique columns
+    def remove_unique_columns(self,df):
+        pass
+
+    #TODO remove duplicate columns
+    def remove_duplicate_columns(self, df):
+        pass
+
