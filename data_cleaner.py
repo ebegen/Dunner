@@ -22,7 +22,6 @@ class DataCleaner():
 
         return duplicated_columns
 
-
     def remove_columns(self, df, columns=None):
         '''
         Removes selected columns from selected dataframe

@@ -32,6 +32,15 @@ def multiply():
     b = 3
     print(a * b)
 
+def change_str_column(str_series):
+
+    if str_series.dtype == 'object':
+        #str_series = str_series.replace({'Riti':'Emre'})
+        str_series = str_series.apply(lambda row: '22SE' if row == '22E' else row)
+
+    return str_series
+
+
 if __name__ == '__main__':
 
     # conditional data cleaner test
@@ -105,17 +114,21 @@ if __name__ == '__main__':
     #
     # print(df)
 
-    students = [('jack', 34, 'Sydeny', 34, 'Sydeny', 34),
-                ('Riti', 30, 'Delhi', 30, 'Delhi', 30),
-                ('Aadi', 16, 'New York', 16, 'New York', 16),
-                ('Riti', 30, 'Delhi', 30, 'Delhi', 30),
-                ('Riti', 30, 'Delhi', 30, 'Delhi', 30),
-                ('Riti', 30, 'Mumbai', 30, 'Mumbai', 30),
-                ('Aadi', 40, 'London', 40, 'London', 40),
-                ('Sachin', 30, 'Delhi', 30, 'Delhi', 30)
-                ]
+    # students = [('jack', 34, 'Sydeny', 34, 'Sydeny', 34),
+    #             ('Riti', 30, 'Delhi', 30, 'Delhi', 30),
+    #             ('Aadi', 16, 'New York', 16, 'New York', 16),
+    #             ('Riti', 30, 'Delhi', 30, 'Delhi', 30),
+    #             ('Riti', 30, 'Delhi', 30, 'Delhi', 30),
+    #             ('Riti', 30, 'Mumbai', 30, 'Mumbai', 30),
+    #             ('Aadi', 40, 'London', 40, 'London', 40),
+    #             ('Sachin', 30, 'Delhi', 30, 'Delhi', 30)
+    #             ]
+    #
+    # df = pd.DataFrame(students, columns=['Name', 'Age', 'City', 'Marks', 'Address', 'Pin'])
 
-    df = pd.DataFrame(students, columns=['Name', 'Age', 'City', 'Marks', 'Address', 'Pin'])
+    do = DataOperations()
+    nex_df = do.process_Pandas_data(change_str_column, df)
+
     dc = DataCleaner()
     df = dc.remove_duplicates(df)
 
