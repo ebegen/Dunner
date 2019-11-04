@@ -97,12 +97,27 @@ if __name__ == '__main__':
     # do = DataOperations()
     # do.divide_date_to_periods(df,'test',['y','M','d','Q'])
 
-    dates = ['2015-08-10','2015-08-11','2015-08-12']
-    df = pd.DataFrame({'test': dates})
-    do = DataOperations()
-    df = do.to_datetime(df,'test')
+    #Convert to datetime test section
+    # dates = ['2015-08-10','2015-08-11','2015-08-12']
+    # df = pd.DataFrame({'test': dates})
+    # do = DataOperations()
+    # df = do.to_datetime(df,'test')
+    #
+    # print(df)
 
-    print(df)
+    students = [('jack', 34, 'Sydeny', 34, 'Sydeny', 34),
+                ('Riti', 30, 'Delhi', 30, 'Delhi', 30),
+                ('Aadi', 16, 'New York', 16, 'New York', 16),
+                ('Riti', 30, 'Delhi', 30, 'Delhi', 30),
+                ('Riti', 30, 'Delhi', 30, 'Delhi', 30),
+                ('Riti', 30, 'Mumbai', 30, 'Mumbai', 30),
+                ('Aadi', 40, 'London', 40, 'London', 40),
+                ('Sachin', 30, 'Delhi', 30, 'Delhi', 30)
+                ]
+
+    df = pd.DataFrame(students, columns=['Name', 'Age', 'City', 'Marks', 'Address', 'Pin'])
+    dc = DataCleaner()
+    df = dc.remove_duplicates(df)
 
     print("End")
 

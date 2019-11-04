@@ -4,6 +4,25 @@ import swifter
 
 class DataCleaner():
 
+    def _getDuplicateColumns(self, df,verbose=False):
+        groups = df.columns.to_series().groupby(df.dtypes).groups
+        duplicated_columns = []
+        for dtype, col_names in groups.items():
+           column_values = df[col_names]
+           num_columns = len(col_names)
+           for i in range(num_columns):
+               column_i = column_values.iloc[:,i].values
+               for j in range(i + 1, num_columns):
+                   column_j = column_values.iloc[:,j].values
+                   if np.array_equal(column_i, column_j):
+                       if verbose:
+                           print("column {} is a duplicate of column {}".format(col_names[i], col_names[j]))
+                       duplicated_columns.append(col_names[i])
+                       break
+
+        return duplicated_columns
+
+
     def remove_columns(self, df, columns=None):
         '''
         Removes selected columns from selected dataframe
@@ -56,6 +75,10 @@ class DataCleaner():
         return df
 
     #TODO remove duplicate columns
-    def remove_duplicate_columns(self, df):
-        pass
+    def remove_duplicates(self, df):
+        df = df.drop_duplicates()
+        df = df.drop(columns=self._getDuplicateColumns(df))
+
+        return df
+
 
