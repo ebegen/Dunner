@@ -49,7 +49,11 @@ class DataCleaner():
 
     #TODO remove unique columns
     def remove_unique_columns(self,df):
-        pass
+        for i in df.columns:
+            if len(df[i].unique()) == 1:
+                df = df.drop(i, axis=1)
+
+        return df
 
     #TODO remove duplicate columns
     def remove_duplicate_columns(self, df):
