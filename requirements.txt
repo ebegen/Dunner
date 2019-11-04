@@ -20,6 +20,22 @@ dask
 #asyncio
 #schedule
 
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
 ###--###
 # This is a command
 #Use pip install -r example-requirements.txt to install:
