@@ -1,9 +1,9 @@
 from multiprocessing import freeze_support
 
-from data_cleaner import DataCleaner
-from data_operations import DataOperations
+from dunner.data_cleaner import DataCleaner
+from dunner.data_operations import DataOperations
 import pandas as pd
-import helper
+import dunner.preprocess_helper
 import pandas as pd
 import time
 import numpy as np

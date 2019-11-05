@@ -4,7 +4,7 @@ from multiprocessing import cpu_count, Pool
 import dask.dataframe as ddf
 import swifter
 
-class Helper(object):
+class PreprocessHelper(object):
 
     def __init__(self):
         pass

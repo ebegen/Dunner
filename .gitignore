@@ -1,6 +1,8 @@
 /.idea/*
 /venv/*
-
+/build/*
+/dist/*
+/Dunner.egg-info/*
 .idea
 
 # dotenv
