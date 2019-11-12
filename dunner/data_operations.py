@@ -65,6 +65,13 @@ class DataOperations:
             df = self.divide_date_to_periods(df,date_column,['Y','M','D','Q'])
         return df
 
+    #TODO change string column to numeric
+    def change_obj_to_num(self):
+        pass:
+
+
+
+
 
 
 

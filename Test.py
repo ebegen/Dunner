@@ -44,31 +44,33 @@ def change_str_column(str_series):
 if __name__ == '__main__':
 
     # conditional data cleaner test
-    # dc = DataCleaner()
-    # record = {
-    #
-    #     'Name': ['Ankit', 'Amit', 'Aishwarya', 'Priyanka', 'Priya', 'Shaurya'],
-    #     'Age': [21, 19, 20, 18, 17, 21],
-    #     'Stream': ['Math', 'Commerce', 'Science', 'Math', 'Math', 'Science'],
-    #     'Percentage': [88, 92, 95, 70, 65, 78]}
-    #
-    # # create a dataframe
-    # dataframe = pd.DataFrame(record, columns=['Name', 'Age', 'Stream', 'Percentage'])
-    #
-    # dict = {'Age': 'x>17', 'Stream': 'x==\'Math\'', 'Percentage': 'x>70'}
-    #
-    # new_df = dc.remove_rows_by_condition(dataframe, dict)
+    dc = DataCleaner()
+    record = {
 
-    #parallel process test
+        'Name': ['Ankit', 'Amit', 'Aishwarya', 'Priyanka', 'Priya', 'Shaurya'],
+        'Age': [21, 19, 20, 18, 17, 21],
+        'Stream': ['Math', 'Commerce', 'Science', 'Math', 'Math', 'Science'],
+        'Percentage': [88, 92, 95, 70, 65, 78]}
+
+    # create a dataframe
+    dataframe = pd.DataFrame(record, columns=['Name', 'Age', 'Stream', 'Percentage'])
+
+    dict = {'Age': 'x>17', 'Stream': 'x==\'Math\'', 'Percentage': 'x>70'}
+
+    new_df = dc.remove_rows_by_condition(dataframe, dict)
+
+    #region parallel process test
     #df = pd.read_csv('datathon_case_1_case_1_market_data.csv')
     #test = helper.Helper.parallelize(df, parallel_test_func)
+    #endregion
 
-    #pipeline test
+    #region pipeline test
     #func_list = {"sum":sum,"multiply":multiply}
     #helper = helper.Helper()
     #helper.pipeline(func_list)
+    #endregion
 
-    #outlier remove test
+    #region outlier remove test
     # dt = DataCleaner()
     # np.random.seed(42)
     # age = np.random.randint(20, 100, 50)
@@ -76,8 +78,9 @@ if __name__ == '__main__':
     # address = ['address' + str(i) for i in range(50)]
     # df = pd.read_csv('datathon_case_1_case_1_market_data.csv') #pd.DataFrame(data={'age': age, 'name': name, 'address': address})
     # removed_df = dt.remove_outliers(df, .05,.95)
+    #endregion
 
-    #Faster data read
+    #region Faster data read
     # start_time = time.time()
     # df = pd.read_csv('datathon_case_1_case_1_market_data.csv')
     # elapsed_time = time.time() - start_time
@@ -87,16 +90,15 @@ if __name__ == '__main__':
     # df_f = do.read_csv_file('datathon_case_1_case_1_market_data.csv')
     # elapsed_time = time.time() - start_time
     # print(str.format("Pandas geçen zaman {0}", time.strftime("%H:%M:%S", time.gmtime(elapsed_time))))
+    #endregion
 
-    #Return unique elements from list
-
-    #unique data test
+    #region unique data test
     # lst = ['word1','word2','word3']
     #     # do=DataOperations()
     #     # rtr = do.return_unique_data(lst)
-    #
+    #endregion
 
-    #Divide Date to Season Test
+    #region Divide Date to Season Test
     # date_today = datetime.datetime.now()
     # days = pd.date_range(date_today, date_today + timedelta(7), freq='D')
     #
@@ -105,14 +107,16 @@ if __name__ == '__main__':
     # df = pd.DataFrame({'test': days, 'col2': data})
     # do = DataOperations()
     # do.divide_date_to_periods(df,'test',['y','M','d','Q'])
+    #endregion
 
-    #Convert to datetime test section
+    #region Convert to datetime test section
     # dates = ['2015-08-10','2015-08-11','2015-08-12']
     # df = pd.DataFrame({'test': dates})
     # do = DataOperations()
     # df = do.to_datetime(df,'test')
     #
     # print(df)
+    #endregion
 
     # students = [('jack', 34, 'Sydeny', 34, 'Sydeny', 34),
     #             ('Riti', 30, 'Delhi', 30, 'Delhi', 30),
