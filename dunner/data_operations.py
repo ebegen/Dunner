@@ -1,6 +1,7 @@
 import feather
 import dask.dataframe as dd
 import pandas as pd
+import numpy as np
 from multiprocessing import Pool, cpu_count
 
 class DataOperations:
@@ -66,9 +67,15 @@ class DataOperations:
         return df
 
     #TODO change string column to numeric
-    def change_obj_to_num(self):
-        pass:
+    def change_obj_to_num(self, df, limit):
+        for col in df.columns:
+            if df.dtypes[col] == np.object and not df[col].isnull().values.any() and len(df[col].unique())<=limit:
+                one_hot = pd.get_dummies(df[col])
+                df = df.drop(col, axis=1)
+                df = df.join(one_hot)
+        return df
 
+    #TODO
 
 
 

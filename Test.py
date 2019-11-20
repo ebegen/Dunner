@@ -55,9 +55,9 @@ if __name__ == '__main__':
     # create a dataframe
     dataframe = pd.DataFrame(record, columns=['Name', 'Age', 'Stream', 'Percentage'])
 
-    dict = {'Age': 'x>17', 'Stream': 'x==\'Math\'', 'Percentage': 'x>70'}
-
-    new_df = dc.remove_rows_by_condition(dataframe, dict)
+    # dict = {'Age': 'x>17', 'Stream': 'x==\'Math\'', 'Percentage': 'x>70'}
+    #
+    # new_df = dc.remove_rows_by_condition(dataframe, dict)
 
     #region parallel process test
     #df = pd.read_csv('datathon_case_1_case_1_market_data.csv')
@@ -131,7 +131,7 @@ if __name__ == '__main__':
     # df = pd.DataFrame(students, columns=['Name', 'Age', 'City', 'Marks', 'Address', 'Pin'])
 
     do = DataOperations()
-    nex_df = do.process_Pandas_data(change_str_column, df)
+    nex_df = do.change_obj_to_num(dataframe, limit=6)
 
     dc = DataCleaner()
     df = dc.remove_duplicates(df)
